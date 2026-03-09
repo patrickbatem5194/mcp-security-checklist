@@ -1,0 +1,8 @@
+title: MCP Security Checklist
+description: A practical, community-maintained security baseline for teams building and deploying Model Context Protocol servers and AI agent infrastructure.
+url: "https://helixar-ai.github.io"
+baseurl: "/mcp-security-checklist"
+
+theme: null
+
+plugins: []

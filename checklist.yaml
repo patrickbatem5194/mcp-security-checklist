@@ -1,0 +1,188 @@
+metadata:
+  name: MCP Security Checklist
+  version: 1.0.0
+  maintained_by: Helixar Security Research
+  url: https://github.com/helixar-ai/mcp-security-checklist
+  last_updated: "2025-03-01"
+
+categories:
+
+  - id: auth
+    name: Authentication & Authorization
+    audience: [security-engineers, all]
+    risk_level: critical
+    items:
+      - id: auth-001
+        control: Require authentication on all MCP endpoints
+        rationale: Unauthenticated tool invocation allows any caller to execute tools
+        tags: [authentication, baseline]
+      - id: auth-002
+        control: Use short-lived tokens for agent sessions
+        rationale: Long-lived static keys increase exposure window on compromise
+        tags: [authentication, tokens]
+      - id: auth-003
+        control: Implement mTLS for server-to-server MCP communication
+        rationale: Mutual TLS ensures both parties are authenticated in transit
+        tags: [authentication, tls, network]
+      - id: auth-004
+        control: Do not embed credentials in agent prompts or tool descriptions
+        rationale: Agents can leak credentials in responses or logs
+        tags: [authentication, secrets]
+      - id: auth-005
+        control: Use a secrets manager for MCP server credentials
+        rationale: Environment variables are frequently exposed in logs or config dumps
+        tags: [authentication, secrets, infrastructure]
+      - id: auth-006
+        control: Apply least-privilege scoping to every tool
+        rationale: Overprivileged tools expand blast radius on compromise
+        tags: [authorization, least-privilege]
+      - id: auth-007
+        control: Separate read-only and write/execute tools
+        rationale: Require explicit elevated authorization for destructive operations
+        tags: [authorization, least-privilege]
+      - id: auth-008
+        control: Enforce per-agent identity on tool invocations
+        rationale: Shared credentials prevent individual agent traceability
+        tags: [authorization, identity]
+      - id: auth-009
+        control: Validate tool-level authorization, not just server-level auth
+        rationale: Gateway-only checks can be bypassed via direct MCP calls
+        tags: [authorization]
+      - id: auth-010
+        control: Restrict which tools are visible to which agents
+        rationale: Tool discovery itself is an attack surface
+        tags: [authorization, exposure]
+
+  - id: input-validation
+    name: Input Validation & Prompt Injection
+    audience: [engineers]
+    risk_level: critical
+    items:
+      - id: input-001
+        control: Validate structure and type of all tool inputs before execution
+        rationale: Unvalidated inputs can cause unexpected behavior or injection
+        tags: [input-validation, baseline]
+      - id: input-002
+        control: Define and enforce input schemas for every tool
+        rationale: Schema enforcement rejects malformed and adversarial inputs early
+        tags: [input-validation, schemas]
+      - id: input-003
+        control: Set maximum length limits on all string inputs
+        rationale: Unbounded inputs can cause resource exhaustion
+        tags: [input-validation, resource-limits]
+      - id: input-004
+        control: Separate data from instructions at the tool layer
+        rationale: Mixing data and instructions enables prompt injection via retrieved content
+        tags: [prompt-injection, architecture]
+      - id: input-005
+        control: Validate output of tool results before passing back to model
+        rationale: Tool responses can contain adversarial instructions targeting further agent calls
+        tags: [prompt-injection, output-validation]
+      - id: input-006
+        control: Require explicit confirmation for irreversible actions
+        rationale: Reduces impact of successful prompt injection or misconfiguration
+        tags: [prompt-injection, safeguards]
+
+  - id: tool-exposure
+    name: Tool & Resource Exposure
+    audience: [engineers, architects]
+    risk_level: high
+    items:
+      - id: tool-001
+        control: Maintain a formal inventory of all exposed tools
+        rationale: You cannot secure what you haven't catalogued
+        tags: [inventory, governance]
+      - id: tool-002
+        control: Review tool inventory before every deployment
+        rationale: Development tools frequently carry over-permissive access into production
+        tags: [inventory, deployment]
+      - id: tool-003
+        control: Expose only tools an agent needs for its current task
+        rationale: Minimal tool surface limits blast radius of compromised sessions
+        tags: [least-privilege, exposure]
+      - id: tool-004
+        control: Use separate MCP instances for different agent roles
+        rationale: Mixing admin and read-only tools enables privilege escalation
+        tags: [segmentation, architecture]
+      - id: tool-005
+        control: Apply egress filtering on all external API calls from MCP tools
+        rationale: Unfiltered egress enables data exfiltration via tool-initiated calls
+        tags: [egress, exfiltration]
+
+  - id: api-session
+    name: API Session Security
+    audience: [platform-engineers]
+    risk_level: high
+    items:
+      - id: session-001
+        control: Assign a unique session ID to every agent interaction
+        rationale: Session IDs are required to trace multi-step tool chains
+        tags: [sessions, traceability]
+      - id: session-002
+        control: Enforce session timeouts
+        rationale: Indefinite sessions increase the window for token abuse
+        tags: [sessions, timeout]
+      - id: session-003
+        control: Apply rate limits per session and per tool
+        rationale: Server-level rate limiting alone is insufficient for agentic workloads
+        tags: [rate-limiting]
+      - id: session-004
+        control: Alert on sustained high-frequency tool calls from a single session
+        rationale: Indicates runaway loops, abuse, or compromised agents
+        tags: [rate-limiting, monitoring]
+      - id: session-005
+        control: Log full request context for every tool call
+        rationale: Incomplete logs prevent incident reconstruction
+        tags: [logging, sessions]
+
+  - id: monitoring
+    name: Monitoring & Observability
+    audience: [secops, platform-engineers]
+    risk_level: high
+    items:
+      - id: mon-001
+        control: Log every tool invocation with session ID, agent identity, tool name, and timestamp
+        rationale: Minimum required data for incident response
+        tags: [logging, baseline]
+      - id: mon-002
+        control: Log tool chain sequences within sessions
+        rationale: Unusual chains are a primary detection signal for agentic threats
+        tags: [logging, detection]
+      - id: mon-003
+        control: Centralize MCP logs into SIEM or log aggregation platform
+        rationale: Siloed logs are inaccessible during a server compromise
+        tags: [logging, infrastructure]
+      - id: mon-004
+        control: Retain logs for a minimum of 90 days
+        rationale: Agentic attack chains can take time to fully manifest
+        tags: [logging, retention]
+      - id: mon-005
+        control: Build a behavioral baseline before relying on anomaly alerts
+        rationale: Without a baseline, anomaly detection generates excessive false positives
+        tags: [detection, baseline]
+
+  - id: network
+    name: Network & Infrastructure
+    audience: [platform-engineers, infrastructure]
+    risk_level: high
+    items:
+      - id: net-001
+        control: Do not expose MCP servers directly to the public internet
+        rationale: Public exposure dramatically increases attack surface
+        tags: [network, baseline]
+      - id: net-002
+        control: Place MCP servers behind a gateway or reverse proxy
+        rationale: Centralizes TLS termination, auth enforcement, and rate limiting
+        tags: [network, architecture]
+      - id: net-003
+        control: Apply egress filtering to MCP servers
+        rationale: Prevents arbitrary outbound connections and exfiltration
+        tags: [network, egress]
+      - id: net-004
+        control: Run MCP server processes as a non-root, dedicated service account
+        rationale: Limits blast radius of OS-level compromise
+        tags: [hardening, infrastructure]
+      - id: net-005
+        control: Keep MCP server dependencies up to date
+        rationale: Supply chain vulnerabilities in libraries are a real and exploited risk
+        tags: [supply-chain, patching]
